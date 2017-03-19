@@ -27,6 +27,8 @@
             <file leaf-file-name="YelpJsonApi.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/main/YelpJsonApi.java">
                 <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="286">
+                    <caret line="159" column="48" lean-forward="false" selection-start-line="159" selection-start-column="21" selection-end-line="159" selection-end-column="48" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="method#YelpJsonApi#0;class#YelpJsonApi#0" expanded="false" />
@@ -92,8 +94,8 @@
         <option value="$PROJECT_DIR$/src/basics/Shop.java" />
         <option value="$PROJECT_DIR$/src/basics/OpenHour.java" />
         <option value="$PROJECT_DIR$/src/basics/ShopLocation.java" />
-        <option value="$PROJECT_DIR$/src/main/Demo.java" />
         <option value="$PROJECT_DIR$/src/basics/Review.java" />
+        <option value="$PROJECT_DIR$/src/main/Demo.java" />
         <option value="$PROJECT_DIR$/src/main/YelpJsonApi.java" />
       </list>
     </option>
@@ -589,10 +591,12 @@
       <workItem from="1489760439696" duration="12025000" />
       <workItem from="1489786610707" duration="9364000" />
       <workItem from="1489927104703" duration="1694000" />
+      <workItem from="1489951442255" duration="4819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="42362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="0" width="1875" height="1038" extended-state="0" />
@@ -1022,6 +1026,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/YelpJsonApi.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="159" column="48" lean-forward="false" selection-start-line="159" selection-start-column="21" selection-end-line="159" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#YelpJsonApi#0;class#YelpJsonApi#0" expanded="false" />
