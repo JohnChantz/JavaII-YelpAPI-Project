@@ -24,7 +24,7 @@ public class Demo {
             else
                 System.out.println("No transactions found!");
 
-            for(Review review : shop.getReviews())
+            for (Review review : shop.getReviews())
                 System.out.println(review.toString());
 
             ArrayList<OpenHour> arrayList = shop.getWorkingHours();
