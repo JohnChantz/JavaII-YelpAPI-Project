@@ -11,18 +11,22 @@ public class Demo {
         Properties.InitializeConfigParameters();
 
         YelpJsonApi yelpJsonApi = new YelpJsonApi();
-        ArrayList<Shop> shopsList = yelpJsonApi.SearchForShops();
+        ArrayList<Shop> shopsList = yelpJsonApi.SearchForShops("san francisco", "food");
         for (Shop shop : shopsList) {
             yelpJsonApi.FetchShop(shop);
-            yelpJsonApi.GetReviews(shop);
         }
         for (Shop shop : shopsList) {
             System.out.println(shop.toString());
-            System.out.println(shop.getCategories());
+            if (!shop.getCategories().isEmpty())
+                System.out.println(shop.getCategories());
+            else
+                System.out.println("No categories found!");
+
             if (!shop.getTransactions().isEmpty())
                 System.out.println(shop.getTransactions());
             else
                 System.out.println("No transactions found!");
+
 
             for (Review review : shop.getReviews())
                 System.out.println(review.toString());
@@ -37,5 +41,10 @@ public class Demo {
 
 
         }
+        System.out.println("***********************************************************");
+
+        ArrayList<Shop> openShops = yelpJsonApi.GetOpenShopsForSpecificHour("san francisco", "food", 1100, 2200);
+        for (Shop shop : openShops)
+            System.out.println(shop.getName());
     }
 }

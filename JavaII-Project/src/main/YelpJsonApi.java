@@ -16,21 +16,25 @@ import java.util.ArrayList;
 
 public class YelpJsonApi {
 
-    private final String USER_AGENT = "Mozilla/5.0";
     private String term = "food";    //to be user input in GUI
     private String location = "san francisco";    //to be user input in GUI
     private final String header_key = Properties.getKey();
     private final String header_value = Properties.getValue();
     private Document doc = null;
-    JSONObject jsonObject = null;
-    String url;
+    private JSONObject jsonObject = null;
+    private String url;
 
-    //Constructor
+    //Constructors
     public YelpJsonApi() {
     }
 
-    private JSONObject connectToApi(String url) {
+    public YelpJsonApi(String location, String term) {
+        this.location = location;
+        this.term = term;
+    }
 
+    private JSONObject connectToApi(String url) {
+        final String USER_AGENT = "Mozilla/5.0";
         jsonObject = null;
         String responseText;
         JSONParser parser = new JSONParser();
@@ -68,7 +72,7 @@ public class YelpJsonApi {
 //        for (Shop x : shopList) {
 //            System.out.println(counter++ + ")" + x.getId());
 //        }
-        return shopList;
+        return (shopList.isEmpty()) ? null : shopList;
     }
 
     public void FetchShop(Shop shop) {
@@ -157,22 +161,26 @@ public class YelpJsonApi {
         shop.setReviews(reviewArrayList);
     }
 
-    public ArrayList GetOpenShopsForSpecificHour(String location, String term, String start, String end) {
+    public ArrayList GetOpenShopsForSpecificHour(String location, String term, int start, int end) {
         ArrayList<Shop> shops = SearchForShops(location, term);
         for (Shop shop : shops) {
             FetchShop(shop);
         }
 
         ArrayList<Shop> openShops = new ArrayList<>();
-        for (Shop shop : openShops) {
+        for (Shop shop : shops) {
             ArrayList<OpenHour> openHours = shop.getWorkingHours();
+            if (openHours == null)
+                continue;
             for (OpenHour hour : openHours) {
-                if (Integer.getInteger(hour.getStart()) <= Integer.getInteger(start) && Integer.getInteger(hour.getEnd()) >= Integer.getInteger(end)) {
+                if (Integer.parseInt(hour.getStart()) <= start && Integer.parseInt(hour.getEnd()) >= end) {
+                    System.out.println(hour.toString());
                     openShops.add(shop);
+                    break;
                 }
             }
         }
-        return shops;
+        return openShops;
     }
 }
 

@@ -48,11 +48,11 @@ public class Review {
     //used to print review attributes
     @Override
     public String toString() {
-        return "Review{\n" +
-                "text=" + text + "\n" +
-                ", userName=" + userName + "\n" +
-                ", rating=" + rating + "\n" +
-                ", timeCreated=" + timeCreated + "\n" +
+        return "Review{" +
+                "text=" + text + " " +
+                ", userName=" + userName + " " +
+                ", rating=" + rating + " " +
+                ", timeCreated=" + timeCreated + " " +
                 '}';
     }
 }
