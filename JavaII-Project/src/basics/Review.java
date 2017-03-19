@@ -1,5 +1,6 @@
 package basics;
 
+//review class
 public class Review {
 
     private String text;
@@ -44,6 +45,7 @@ public class Review {
         this.timeCreated = timeCreated;
     }
 
+    //used to print review attributes
     @Override
     public String toString() {
         return "Review{\n" +
