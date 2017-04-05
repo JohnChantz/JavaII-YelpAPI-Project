@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="YelpBasics:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/YelpBasics_jar</output-path>
+    <root id="archive" name="YelpBasics.jar">
+      <element id="module-output" name="YelpBasics" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/ext libs/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/ext libs/jsoup-1.10.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

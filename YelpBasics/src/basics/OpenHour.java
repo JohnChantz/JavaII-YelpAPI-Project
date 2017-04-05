@@ -1,11 +1,13 @@
 package basics;
 
+/*αναπαριστά τη διαθέσιμη ώρα λειτουργίας για κάθε επιχείρηση*/
+/*η κάθε επιχείρηση περιλαμβάνει ένα ArrayList απο πολλά αντικείμενα τύπου OpenHour*/
 public class OpenHour {
 
-    private Long day;
-    private String start;
-    private String end;
-    private Boolean isOvernight;
+    private Long day;   //ημερα λειτουργίας
+    private String start;   //ώρα ανοίγματος
+    private String end; //ώρα κλεισίματος
+    private Boolean isOvernight;    //boolean τιμή για το αν είναι ολονύχτια η επιχείρηση
 
     //Constructor
     public OpenHour(Long day, String from, String to) {

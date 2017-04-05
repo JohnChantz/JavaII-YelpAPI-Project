@@ -2,25 +2,24 @@ package basics;
 
 import java.util.ArrayList;
 
+/*αναπαράσταση των πληροφοριών που παρέχονται για κάθε επιχείρηση*/
 public class Shop {
 
-    private String name;
-    private String id;
-    private String phone;
-    private String price;
-    private Double rating;
-    private String hours_type;
-    private ShopLocation shopLocation;
-    private ArrayList<OpenHour> workingHours;
-    private ArrayList<Review> reviews;
-    private ArrayList<String> categories;
-    private ArrayList<String> transactions;
+    private String name;    //ονομα επιχειρησης
+    private String id;  //id επιχειρησης (η αναζητηση με το YelpAPI γινεται με αυτο)
+    private String phone;   //τηλεφωνο επιχειρησης
+    private String price;   //νομισμα πληρωμης
+    private Double rating;  //βαθμολογια
+    private String hours_type;  //ειδος ωραριου λειτουργιας
+    private ShopLocation shopLocation;  //αντικειμενο που περιεχει τις πληροφοριες τοποθεσιας για την επιχειρηση
+    private ArrayList<OpenHour> workingHours;   //ArrayList με τις ωρες λειτουργιας
+    private ArrayList<Review> reviews;  //ArrayList με τις κριτικες
+    private ArrayList<String> categories;   //ArrayList με τα διαθεσιμα είδη προϊόντων
+    private ArrayList<String> transactions; //ArrayList με τους διαθεσιμους τροπους συναλλαγων
 
-    //Constructor
     public Shop() {
     }
 
-    //Methods
     public String getName() {
         return name;
     }
@@ -99,20 +98,6 @@ public class Shop {
 
     public void setTransactions(ArrayList<String> transactions) {
         this.transactions = transactions;
-    }
-
-    public void addReview(Review review) {
-        reviews.add(review);
-    }
-
-    public void clearReviews() {
-        reviews.clear();
-    }
-
-    public void printAllReviews() {
-        for (int i = 0; i < reviews.size(); i++) {
-            reviews.get(i).toString();
-        }
     }
 
     public String getHours_type() {

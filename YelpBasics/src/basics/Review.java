@@ -1,18 +1,17 @@
 package basics;
 
-//review class
+/*αναπαράσταση των πληροφοριών που παρέχονται στις κριτικές της κάθε επιχείρησης*/
+/*κάθε επιχείρηση περιέχει πολλά αντικείμενα τύπου Review σε ένα ArrayList*/
 public class Review {
 
-    private String text;
-    private String userName;
-    private Long rating;
-    private String timeCreated;
+    private String text;    //κειμενο κριτικής
+    private String userName;    //ονομα χρήστη που έγραψε την κριτική
+    private Long rating;    //βαθμολογία
+    private String timeCreated; //χρόνος δημιουργίας της κριτικής
 
-    //Constructor
     public Review() {
     }
 
-    //Methods
     public String getText() {
         return text;
     }
@@ -45,7 +44,6 @@ public class Review {
         this.timeCreated = timeCreated;
     }
 
-    //used to print review attributes
     @Override
     public String toString() {
         return "Review{" +

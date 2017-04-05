@@ -1,21 +1,20 @@
 package basics;
 
+/*αποθηκευση των πληροφοριων τοποθεσιας για την καθε επιχειρηση*/
 public class ShopLocation {
 
-    private String address;
-    private String city;
-    private String state;
-    private String zip_code;
-    private String country;
-    private Double latitude;
-    private Double longtitude;
+    private String address; //διευθυνση επιχειρησης
+    private String city;    //πολυ
+    private String state;   //πολιτεια
+    private String zip_code;    //ταχυδρομικος κωδικας
+    private String country; //χωρα
+    private Double latitude;    //γεωγραφικος πλατος
+    private Double longtitude;  //γεωγραφικο μηκος
 
-    //Constructor
     public ShopLocation() {
 
     }
 
-    //Methods
     public String getAddress() {
         return address;
     }

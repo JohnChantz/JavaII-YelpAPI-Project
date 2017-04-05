@@ -14,6 +14,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*συναρτησεις για επικοινωνια με το YelpAPI*/
 public class YelpJsonApi {
 
     private String term = "food";    //to be user input in GUI
@@ -23,7 +24,6 @@ public class YelpJsonApi {
     private JSONObject jsonObject = null;
     private String url;
 
-    //Constructors
     public YelpJsonApi() {
     }
 

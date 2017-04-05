@@ -29,7 +29,6 @@ public class Properties {
     private static java.util.Properties prop = new java.util.Properties();
     private static InputStream inputStream = null;
 
-    //Constructor
     public Properties() {
     }
 
