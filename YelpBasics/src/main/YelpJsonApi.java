@@ -145,7 +145,6 @@ public class YelpJsonApi {
         GetShopCategories(shop);
         GetShopLocationInfo(shop);
         GetShopTransactionMethods(shop);
-
         GetReviews(shop);
     }
 

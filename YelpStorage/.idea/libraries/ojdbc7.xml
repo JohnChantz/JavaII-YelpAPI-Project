@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="jsoup-1.10.2">
+  <library name="ojdbc7">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../YelpBasics/ext libs/jsoup-1.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ojdbc7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

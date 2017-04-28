@@ -1,8 +1,10 @@
 package basics;
 
+import java.io.Serializable;
+
 /*αναπαράσταση των πληροφοριών που παρέχονται στις κριτικές της κάθε επιχείρησης*/
 /*κάθε επιχείρηση περιέχει πολλά αντικείμενα τύπου Review σε ένα ArrayList*/
-public class Review {
+public class Review implements Serializable{
 
     private String text;    //κειμενο κριτικής
     private String userName;    //ονομα χρήστη που έγραψε την κριτική

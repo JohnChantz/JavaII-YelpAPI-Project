@@ -1,8 +1,10 @@
 package basics;
 
+import java.io.Serializable;
+
 /*αναπαριστά τη διαθέσιμη ώρα λειτουργίας για κάθε επιχείρηση*/
 /*η κάθε επιχείρηση περιλαμβάνει ένα ArrayList απο πολλά αντικείμενα τύπου OpenHour*/
-public class OpenHour {
+public class OpenHour implements Serializable{
 
     private Long day;   //ημερα λειτουργίας
     private String start;   //ώρα ανοίγματος

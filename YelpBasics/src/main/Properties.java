@@ -130,7 +130,7 @@ public class Properties {
 
     public static void InitializeConfigParameters() {
         try {
-            inputStream = new FileInputStream("C:\\Users\\John Ch\\Desktop\\Εργασία Java II\\config.properties");
+            inputStream = new FileInputStream("properties\\config.properties");
             prop.load(inputStream);
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();

@@ -1,9 +1,10 @@
 package basics;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*αναπαράσταση των πληροφοριών που παρέχονται για κάθε επιχείρηση*/
-public class Shop {
+public class Shop implements Serializable{
 
     private String name;    //ονομα επιχειρησης
     private String id;  //id επιχειρησης (η αναζητηση με το YelpAPI γινεται με αυτο)

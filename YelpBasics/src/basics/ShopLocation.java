@@ -1,7 +1,9 @@
 package basics;
 
+import java.io.Serializable;
+
 /*αποθηκευση των πληροφοριων τοποθεσιας για την καθε επιχειρηση*/
-public class ShopLocation {
+public class ShopLocation implements Serializable{
 
     private String address; //διευθυνση επιχειρησης
     private String city;    //πολυ
