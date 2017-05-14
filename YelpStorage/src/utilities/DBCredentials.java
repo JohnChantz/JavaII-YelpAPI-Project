@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+//manages the information for db connection
+//information for the db is stored in dbcredentials.properties file
+//this class communicates with that file
 public class DBCredentials {
 
     private static String username;

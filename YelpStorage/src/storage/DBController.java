@@ -35,7 +35,7 @@ public class DBController {
             "longtitude BINARY_DOUBLE" +
             ")";
     public static final String queryForReview = "CREATE TABLE review(" +
-            "text VARCHAR(1500) UNIQUE," +
+            "text VARCHAR2(3000) UNIQUE," +
             "username VARCHAR(500)," +
             "rating LONG," +
             "timecreated VARCHAR(500)," +
@@ -58,15 +58,12 @@ public class DBController {
             System.err.println("Connection to oracle database failed!");
             return;
         }
-        System.out.println("Connection to oracle database successful!");
         try {
             statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Failed to create Statement!");
         }
-        System.out.println("Statement created successfully!");
-
     }
 
     public void terminateConnection() {
@@ -80,14 +77,14 @@ public class DBController {
 
     public void addShop(Shop shop) {
         query = "INSERT INTO shop VALUES(" +
-                "'" + shop.getName() + "'," +
+                "'" + shop.getName().replace("'", "''") + "'," +     //sanitize sql statement
                 "'" + shop.getId() + "'," +
                 "'" + shop.getPhone() + "'," +
                 "'" + shop.getPrice() + "'," +
                 shop.getRating() + "," +
                 "'" + shop.getHours_type() + "'," +
                 "'" + shop.getShopLocation().getAddress() + "'," +
-                "'" + shop.getShopLocation().getCity() + "'," +
+                "'" + shop.getShopLocation().getCity().toLowerCase() + "'," +
                 "'" + shop.getShopLocation().getState() + "'," +
                 "'" + shop.getShopLocation().getZip_code() + "'," +
                 "'" + shop.getShopLocation().getCountry() + "'," +
@@ -97,6 +94,7 @@ public class DBController {
 
         try {
             statement.executeUpdate(query);
+            System.err.println(shop.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -105,7 +103,7 @@ public class DBController {
     public void addMultipleShops(ArrayList<Shop> shops) {
         for (Shop shop : shops) {
             query = "INSERT INTO shop VALUES(" +
-                    "'" + shop.getName() + "'," +
+                    "'" + shop.getName().replace("'", "''") + "'," +     //sanitize sql statement
                     "'" + shop.getId() + "'," +
                     "'" + shop.getPhone() + "'," +
                     "'" + shop.getPrice() + "'," +
@@ -123,6 +121,7 @@ public class DBController {
                 statement.addBatch(query);
             } catch (SQLException e) {
                 e.printStackTrace();
+                System.err.println(shop.getId());
             }
         }
         this.executeBatch();
@@ -136,33 +135,35 @@ public class DBController {
         }
     }
 
-    public void addReview(Review review, Shop shop) {
+    public void addReview(Review review, String shopID) {
         query = "INSERT INTO review VALUES(" +
-                "'" + review.getText() + "'" +
-                "'" + review.getUserName() + "'" +
+                "'" + review.getText().replace("'", "''") + "'" +        //sanitize sql statements
+                "'" + review.getUserName().replace("'", "''") + "'" +
                 "'" + review.getRating() + "'" +
                 "'" + review.getTimeCreated() + "'" +
-                "'" + shop.getId() + "'" +
+                "'" + shopID + "'" +
                 ")";
         try {
             statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.err.println(shopID);
         }
     }
 
-    public void addMultipleReviews(ArrayList<Review> reviews, Shop shop) {
+    public void addMultipleReviews(ArrayList<Review> reviews, String shopID) {
         for (Review review : reviews) {
             query = "INSERT INTO review VALUES(" +
-                    "'" + review.getText() + "'," +
-                    "'" + review.getUserName() + "'," +
+                    "'" + review.getText().replace("'", "''") + "'," +       //sanitize sql statements
+                    "'" + review.getUserName().replace("'", "''") + "'," +
                     "'" + review.getRating() + "'," +
                     "'" + review.getTimeCreated() + "'," +
-                    "'" + shop.getId() + "'" +
+                    "'" + shopID + "'" +
                     ")";
             try {
                 statement.addBatch(query);
             } catch (SQLException e) {
+                System.err.println(shopID);
                 e.printStackTrace();
             }
         }
@@ -199,8 +200,8 @@ public class DBController {
         return shops;
     }
 
-    public ArrayList<Review> getReviews(String name) {
-        query = "SELECT * FROM review where city='" + name + "'";
+    public ArrayList<Review> getReviews(String shopID) {
+        query = "SELECT * FROM review where shopID='" + shopID + "'";
         ArrayList<Review> reviews = new ArrayList<>();
         try {
             result = statement.executeQuery(query);
@@ -210,7 +211,6 @@ public class DBController {
                 review.setUserName(result.getString("username"));
                 review.setRating(result.getLong("rating"));
                 review.setTimeCreated(result.getString("timecreated"));
-
                 reviews.add(review);
             }
         } catch (SQLException e) {
@@ -230,20 +230,21 @@ public class DBController {
 
     }
 
-    public void clearCityRecords(String city) {
-        query = "DELETE FROM shop WHERE city ='" + city + "'";
+    public void clearDatabaseRecords(Shop shop) {
         try {
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+            query = "DELETE review WHERE shopID = '" + shop.getId() + "'";
+            statement.addBatch(query);
+            query = "COMMIT";
+            statement.addBatch(query);
 
-    public void clearDatabaseRecords() {
-        query = "truncate table shop";
-        try {
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
+            query = "DELETE SHOP WHERE city = '" + shop.getShopLocation().getCity() + "'";
+            statement.addBatch(query);
+            query = "COMMIT";
+            statement.addBatch(query);
+
+            statement.executeBatch();
+
+        }catch (SQLException e){
             e.printStackTrace();
         }
     }
